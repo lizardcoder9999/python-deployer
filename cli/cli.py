@@ -4,9 +4,16 @@ class Server:
         self.host = ""
         self.user = ""
         self.password = ""
+        self.project = ""
+        self.project_path = ""
 
         print("Please Enter your server info")
 
+    def get_project_name(self):
+        self.project = str(input("Please enter your project name: "))
+
+    def get_project_path(self):
+        self.project_path = str(input("Please enter your project path: "))
 
     def get_host(self):
         self.host = str(input("Please enter the host of your server: "))

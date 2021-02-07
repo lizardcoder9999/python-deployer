@@ -25,15 +25,16 @@ else :
     print("You need to choose an option")
 
 if converted_project == "1":
-    serverObject = Server()
-    serverObject.get_host()
-    serverObject.get_user()
-    serverObject.get_password()
-    # client = SSHClient()
-    # client.connect(serverObject.host, serverObject.user, serverObject.password)
-    node = Node(serverObject)
+    server = Server()
+    server.get_project_name()
+    server.get_project_path()
+    server.get_host()
+    server.get_user()
+    server.get_password()
+    node = Node(server)
     node.establish_connection()
-    
+    node.make_dir()
+
 
      
 # except: 
