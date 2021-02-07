@@ -25,18 +25,26 @@ else :
     print("You need to choose an option")
 
 if converted_project == "1":
-    server = Server()
-    server.get_project_name()
-    server.get_project_path()
-    server.get_host()
-    server.get_user()
-    server.get_password()
-    node = Node(server)
-    node.establish_connection()
-    node.make_dir()
+    print("Choose an upload method")
+    print("(1) Ftp using .zip file")
+    print("(2) Github repository")
+    upload_type = input("Selection: ")
+    converted_upload_type =str(upload_type)
+    if converted_upload_type == "1":
+        server = Server()
+        server.get_project_name()
+        server.get_project_path()
+        server.get_host()
+        server.get_user()
+        server.get_password()
+        node = Node(server)
+        node.establish_connection()
+        node.make_dir()
+        node.establish_sftp()
+    else :
+        print("You need to choose a upload type.")
 
-
-     
+  
 # except: 
 #     print("An Error has occured please try again")
     
