@@ -16,4 +16,6 @@ class Server:
 
     def get_password(self):
         self.password = str(input("Enter the password for your server: "))
+    
+
         
