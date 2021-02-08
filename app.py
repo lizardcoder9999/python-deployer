@@ -34,6 +34,7 @@ if converted_project == "1":
         server = Server()
         server.get_project_name()
         server.get_project_path()
+        server.get_entry_point()
         server.get_host()
         server.get_user()
         server.get_password()

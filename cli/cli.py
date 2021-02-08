@@ -6,6 +6,7 @@ class Server:
         self.password = ""
         self.project = ""
         self.project_path = ""
+        self.project_entry = ""
 
         print("Please Enter your server info")
 
@@ -14,6 +15,9 @@ class Server:
 
     def get_project_path(self):
         self.project_path = str(input("Please enter your project path: "))
+
+    def get_entry_point(self):
+        self.project_entry = str(input("Please enter your entry point: "))
 
     def get_host(self):
         self.host = str(input("Please enter the host of your server: "))
