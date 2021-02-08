@@ -14,26 +14,20 @@ class Node:
         self.session.load_system_host_keys()
         self.session.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         self.session.connect(self.server.host,port,self.server.user,self.server.password)
-        # global channel = self.session.get_transport().open_session()
-        # channel.invoke_shell()
 
     def establish_sftp(self):
         port = 22 
         host,port = self.server.host,port
-        transport = paramiko.Transport((host,port))
         username,password = self.server.user,self.server.password
         makedir_sh_dir = os.path.dirname(os.path.realpath('__file__'))
         makedir_sh_name = os.path.join(makedir_sh_dir,"scripts/jsnode/makedir.sh")
-        with pysftp.Connection('hostname', username=username, password=password) as sftp:
-            with sftp.mkdir(self.server.project_name,mode=777)
-
-
-       
-        
-
-        #Upload
         script_server_path = f"{self.path}/scripts"
-
+        with pysftp.Connection(self.server.host, username=username, password=password) as sftp:
+            sftp.mkdir(self.server.project,mode=777)
+            sftp.mkdir('scripts',mode=777)
+            sftp.chdir(f'{self.path}/scripts')
+            sftp.put(makedir_sh_name,os.path.join("","makedir.sh"))
+   
 
     def make_dir(self):
         makedir_sh_dir = os.path.dirname(os.path.realpath('__file__'))
@@ -44,8 +38,9 @@ class Node:
     
         (stdin, stdout, stderr) = self.session.exec_command("pwd",get_pty=True)
         for line in stdout.read().splitlines() :
-            print(line)
-            self.path = str(line)
+            formatted_line = line.decode("utf-8")
+            print(formatted_line)
+            self.path = str(formatted_line)
             break
        
 

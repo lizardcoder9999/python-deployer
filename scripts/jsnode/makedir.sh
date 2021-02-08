@@ -1,5 +1,5 @@
 sudo su 
 satvikag
 softwaresatbot123
-mkdir 1
-chmod -R 777 1
+mkdir node_app
+chmod -R 777 node_app
