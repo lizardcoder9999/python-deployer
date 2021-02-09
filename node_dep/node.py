@@ -29,7 +29,7 @@ class Node:
             sftp.chdir(f'{self.path}/scripts')
             sftp.put(deployment_sh_name,os.path.join("","deployment.sh"))
             sftp.chdir(f'{self.path}/{self.server.project}')
-            sftp.put(user_zip_file,os.path.join("",f"{self.server.project}.zip"))
+            sftp.put(user_zip_file)
    
 
     def make_dir(self):
